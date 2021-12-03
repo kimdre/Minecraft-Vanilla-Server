@@ -18,7 +18,7 @@ if ! echo "$EXISTING_VERSIONS" | grep -q "$LATEST_VERSION" || [[ "$1" == "-f" ]]
 
 	DOWNLOAD_URL=$(echo "$HTML" | grep -oe "https://launcher.mojang.com.*server.jar")
 
-  build_number=$(/usr/local/bin/drone build create --param MINECRAFT_SERVER_VERSION="$TAG_VERSION" --param DOWNLOAD_URL="$DOWNLOAD_URL" Games/Minecraft-Vanilla-Server | grep Number  | cut -d' ' -f2)
+  build_number=$(/usr/local/bin/drone build create --param MINECRAFT_SERVER_VERSION="$LATEST_VERSION" --param DOWNLOAD_URL="$DOWNLOAD_URL" Games/Minecraft-Vanilla-Server | grep Number  | cut -d' ' -f2)
   echo "Starting build pipeline at
   https://drone.pyas.de/Games/Minecraft-Vanilla-Server/$build_number"
 
