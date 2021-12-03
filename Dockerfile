@@ -10,10 +10,6 @@ LABEL org.opencontainers.image.description="Minecraft Vanilla Server Java Editio
 LABEL org.opencontainers.image.base.name="hub.docker.com/openjdk:18-jdk-alpine3.13"
 LABEL org.opencontainers.image.title="Minecraft Vanilla Server Java Edition"
 
-RUN apk update && \
-    apk add --no-cache --update coreutils && \
-    apk add --no-cache --update tzdata bash
-
 ENV TZ=Europe/Berlin
 ENV MINECRAFT_SERVER_VERSION="$MINECRAFT_SERVER_VERSION"
 
@@ -25,6 +21,9 @@ VOLUME /app
 ADD $DOWNLOAD_URL /opt/server.jar
 COPY app /app
 
+RUN apk update && \
+    apk add --no-cache --update coreutils && \
+    apk add --no-cache --update tzdata bash
 RUN chmod 755 /app/entrypoint.sh
 RUN echo "eula=true" > /app/eula.txt
 
