@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.title="Minecraft Vanilla Server Java Edition"
 
 RUN apk update && \
     apk add --no-cache --update coreutils && \
-    apk add --no-cache --update tzdata curl unzip bash
+    apk add --no-cache --update tzdata bash
 
 ENV TZ=Europe/Berlin
 ENV MINECRAFT_SERVER_VERSION="$MINECRAFT_SERVER_VERSION"
