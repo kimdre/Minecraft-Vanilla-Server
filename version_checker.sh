@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 # This Script checks for new Minecraft Vanilla Server Version on the Mojang Website
 # and (if a new Version got published) creates a new build via Drone CI Command Line Tool
 
