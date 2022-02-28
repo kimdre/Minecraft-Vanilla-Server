@@ -3,21 +3,6 @@ type: docker
 name: Minecraft Vanilla Server
 
 steps:
-  - name: build private
-    image: plugins/docker
-    settings:
-      repo: docker-registry.pyas.de/games/minecraft-vanilla-server
-      registry: docker-registry.pyas.de
-      dockerfile: ./Dockerfile
-      tags:
-        - latest
-        - ${MINECRAFT_SERVER_VERSION}
-      build_args_from_env:
-        - MINECRAFT_SERVER_VERSION
-        - DOWNLOAD_URL
-    depends_on:
-      - clone
-
   - name: build public
     image: plugins/docker
     settings:
